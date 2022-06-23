@@ -1,0 +1,61 @@
+
+<div class="container-fluid">
+
+  <% if (name) { %>
+    <div class="alert alert-secondary" role="alert">
+      Bienvenido <%= name %>    
+      <form method="get" action="/logout">
+        <input type="hidden"  id="name" value= <% name %> name="name">
+        <button class="btn btn-secondary btn-sm" type="submit">Logout</button>
+      </form>
+    </div>
+  <% } %>
+  <legend>Ingrese productos</legend>
+        <!--<form action="/productos"  method="post">-->
+        <form onsubmit="addProduct(this)">
+            <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input class="form-control" type="text" id="name" name ="name" required>
+            </div>
+            <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input class="form-control" type="number" id="price" name ="price" required>
+            </div>
+            <div class="mb-3">
+            <label for="thumbnail" class="form-label">Foto URL</label>
+            <input class="form-control" type="text" id="thumbnail" name ="thumbnail" required>
+            </div>
+            <div class="mb-3">
+              <button type="submit"  class="btn btn-primary mb-3"> Enviar </button>
+            </div>
+      </form>
+
+        <% if (listExists) { %>
+        <legend>Vista de productos</legend>
+          <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr><div id="products"></div></tr> -->
+            <tr>
+            <th style="font-weight: normal;"><div scope="row" id="title_set"></div></th>
+            <th style="font-weight: normal;"><div scope="row" id="price_set"></div></th>
+            <th style="font-weight: normal;"><div scope="row" id="thumbnail_set"></div></th>
+            </tr>
+            <!-- <th><div id="price_set"></div></th>
+            <th><div id="thumbnail_set"></div></th> -->
+          </tbody>
+        </table>
+        <% } %>
+        
+        <% if (listNotExists) { %>
+        <legend>Vista de productos</legend>
+        <p class="font-monospace">No se encontraron productos</p>
+        <% } %>   
+         
+</div>

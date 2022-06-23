@@ -1,0 +1,14 @@
+<% if (login) { %>
+<div class="container-fluid">
+    <legend>Login del usuario</legend>
+          <form action="/login"  method="post">
+          <!-- <form onsubmit="addLogg(this)"> -->
+              <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input class="form-control" type="text" id="user" name ="user" required>
+              <div class="mb-3">
+                <button type="submit"  class="btn btn-primary mb-3"> Enviar </button>
+              </div>
+        </form>
+  </div>
+<% } %>

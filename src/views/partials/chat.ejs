@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <legend>Centro de Mensajes</legend>
+          <!--<form action="/productos"  method="post">-->
+          <form onsubmit="addChat(this)">
+              <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input class="form-control" type="email" id="email" name ="email" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Nombre</label>
+              <input class="form-control" type="text" id="name" name ="name" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Apellido</label>
+              <input class="form-control" type="text" id="lastname" name ="lastname" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Edad</label>
+              <input class="form-control" type="text" id="age" name ="age" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Alias</label>
+              <input class="form-control" type="text" id="alias" name ="alias" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Avatar</label>
+              <input class="form-control" type="text" id="thumbnail" name ="thumbnail" required>
+              </div>
+
+              <div class="mb-3">
+              <label for="text" class="form-label">Mensaje</label>
+              <input class="form-control" type="text" id="text" name ="text" required>
+              </div>
+              <div class="mb-3">
+                <button type="submit"  class="btn btn-primary mb-3"> Enviar </button>
+              </div>
+            </form>
+    <div scope="row" id="compression"></div> 
+    <div scope="row" id="text_set"></div> 
+
+</div>
