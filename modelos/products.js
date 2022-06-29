@@ -2,16 +2,15 @@
 /*                MONGO DB                 */
 /* --------------------------------------- */
 
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 
 const productsCollection = 'products';
 
 const prodSchema = new mongoose.Schema({
-    title: {type: String, required: true, max: 100},
+    name: {type: String, required: true, max: 100},
     price: {type: Number, required: true},
-    thumbnail: {type: String, required: true},
+    thumbnail: {type: String, required: true}
 })
 
-
-
-export const products = mongoose.model(productsCollection, prodSchema)
+const products = mongoose.model(productsCollection, prodSchema);
+module.exports = products;

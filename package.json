@@ -1,5 +1,5 @@
 {
-  "name": "proyecto",
+  "name": "clase-12",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -12,14 +12,12 @@
   "dependencies": {
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
-    "ejs": "^3.1.8",
+    "ejs": "^3.1.7",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "faker": "^5.5.3",
-    "firebase-admin": "^10.2.0",
-    "mongoose": "^6.3.4",
+    "mongoose": "^6.4.1",
     "normalizr": "^3.6.2",
-    "socket.io": "^4.5.1"
-  },
-  "description": ""
+    "socket.io": "^4.5.0"
+  }
 }

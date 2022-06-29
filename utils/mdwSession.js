@@ -7,4 +7,4 @@ function userLogged(req, res, next) {
     }
 }
 
-module.exports = {userLogged};
+module.exports = { userLogged };

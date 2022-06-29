@@ -30,13 +30,13 @@ class ContenedorArchivo{
             console.log("No se pudieron obtener los productos");
         }
     }
-    async  getContentFile(){ 
+     getContentFile(){ 
         let content = [];    
         try {
             const arc =  fs.readFileSync(this.nombre, 'utf-8');         
             content = JSON.parse(arc);
         } catch (error) {
-            this.saveInFile(content)
+             this.saveInFile(content)
             console.log(`Creacion del archivo ${this.nombre}`);
         }
         return content;

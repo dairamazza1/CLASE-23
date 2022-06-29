@@ -4,7 +4,7 @@ const {generarId} = require('../../utils/generadorDeIds')
 
 class ProductoDaoArchivo extends ContenedorArchivo{
     constructor() {
-        super('./src/data/products.txt');
+        super('./data/products.txt');
         let products = this.getAll().then(res=>{
             this.id = (res.length > 0) ? res.length + 1 : 1;
         });
@@ -48,9 +48,8 @@ class ProductoDaoArchivo extends ContenedorArchivo{
     /* --------------------------------------- */
     /*                READ ALL                 */
     /* --------------------------------------- */
-    getAll() {
-        const prod = super.getContentFile()
-        return prod;
+    async getAll() {
+        return this.getContentFile();
     }
     async getProdById(id) {
         let products = await this.getAll();

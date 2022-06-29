@@ -25,11 +25,11 @@ function normalizr(data) {
     // const notCompressDataLength = JSON.stringify(dataObj).length;
     // console.log(notCompressDataLength);
     
-    console.log('----------- OBJETO NORMALIZADO --------------');
+    // console.log('----------- OBJETO NORMALIZADO --------------');
     const normalizeData = normalize(data, dataObj);
-    print(normalizeData)
-    const compressDataLength = JSON.stringify(normalizeData).length;
-    console.log(compressDataLength);
+    // print(normalizeData)
+    // const compressDataLength = JSON.stringify(normalizeData).length;
+    // console.log(compressDataLength);
     
     // console.log('----------- OBJETO DESNORMALIZADO --------------');
     // const denormalizeData = denormalize(normalizeData.result, chat, normalizeData.entities);

@@ -1,15 +1,7 @@
-const socket = io.connect();
-
-const { schema, normalize, denormalize } = require('normalizr') 
-const util = require('util')
-const { print } = require('../utils/normalizrChat') 
-
-
-function print(objeto) {
-    console.log(util.inspect(objeto, false, 12, true));
-}
+//const socket = io.connect();
 
 function renderCompression(data) {
+  console.log(data)
   const html = `<h1>El porcentaje de compresion:</h1> <br> <h1> % ${data} </h1>`;
   document.getElementById("compression").innerHTML = html;
 }
@@ -24,10 +16,10 @@ function renderChat(data) {
     let hora = fecha.getHours() + ":";
     let minutos = fecha.getMinutes() + ":";
     let segundos = fecha.getSeconds() ;
-    const msg = data.map((elem, index) => {
+    const msg = data.mensajes.map((elem, index) => {
       return `<div>
-                    <strong class="blue_chat">${elem.user}</strong> [<strong class="brown_chat">${dia}/${mes}/${anio } ${hora}${minutos}${segundos}</strong>]:
-                    <em class="green_chat">${elem.message}</em>
+                    <strong class="blue_chat">${elem.author.nombre} ${elem.author.apellido}</strong> [<strong class="brown_chat">${dia}/${mes}/${anio } ${hora}${minutos}${segundos}</strong>]:
+                    <em class="green_chat">${elem.text.text}</em>
               </div>`;
     }).join(" ");
     document.getElementById("text_set").innerHTML = msg;
@@ -47,8 +39,8 @@ function addChat(e) {
         text: { text: document.getElementById("text").value }
     };
 
-     console.log("_________");
-     console.log(obj);
+    //  console.log("_________");
+    //  console.log(obj);
      socket.emit('new-text', obj);
 
     document.getElementById("email").value = '';
@@ -65,28 +57,32 @@ function addChat(e) {
 socket.on('text', data => {
     try {
         //esquema de autor del mensaje
-        let author = new schema.Entity("author",{}, { 
+        let author = new normalizr.schema.Entity("author",{}, { 
           idAttribute: "email" 
         });
         //esquema de autores
-        let chat = new schema.Entity("chat", {
+        let chat = new normalizr.schema.Entity("chat", {
           author: {author}
         });
         //esquema objeto
-        let dataObj = new schema.Entity("data", {
+        let dataObj = new normalizr.schema.Entity("data", {
           mensaje : [chat]
         });
-
+        console.log('------------ OBJETO NORMALIZADO ----------------');
+        console.log(data);
         console.log('----------- OBJETO DESNORMALIZADO --------------');
         const denormalizeData = normalizr.denormalize(data.result, dataObj, data.entities);
-        print(denormalizeData)
+        //print(denormalizeData)
+        console.log(denormalizeData);
         renderChat(denormalizeData);
       } catch (error) {
         console.log(error);
       }
 })
 
-// "data" viene desde src\routes\productsRoutes.js. Viene el valor del %
-socket.on("compression", data => {
+// "data" viene desde server.js. Viene el valor del %
+socket.on('compression', data => {
+    console.log("%%%");
+    console.log(data);
     renderCompression(data);
 })

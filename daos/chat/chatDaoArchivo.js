@@ -2,7 +2,7 @@ const { ContenedorArchivo } = require("../../contenedores/ContenedorArchivo");
 
 class ChatDaoArchivo extends ContenedorArchivo{
     constructor() {
-        super('./src/data/chat.txt');
+        super('./data/chat.txt');
         let products = this.getAll().then(res=>{
             this.id = (res.length > 0) ? res.length + 1 : 1;
         });
